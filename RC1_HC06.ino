@@ -3,10 +3,10 @@
 
 #include <SoftwareSerial.h>
 
-#define LEFT_WHEEL_PIN1 3
-#define LEFT_WHEEL_PIN2 9
-#define RIGHT_WHEEL_PIN1 10
-#define RIGHT_WHEEL_PIN2 11
+#define LEFT_WHEEL_PIN1 10
+#define LEFT_WHEEL_PIN2 11
+#define RIGHT_WHEEL_PIN1 3
+#define RIGHT_WHEEL_PIN2 9
 
 #define BT_RX_PIN 8
 #define BT_TX_PIN 7
