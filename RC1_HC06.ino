@@ -19,9 +19,6 @@
 SoftwareSerial bt(BT_RX_PIN, BT_TX_PIN);
 
 void setup() {
-  // 디버깅을 위한 Serial 오픈
-  Serial.begin(9600);
-
   // 블루투스 모듈 시작
   bt.begin(9600);
 
@@ -43,8 +40,6 @@ void loop() {
   // 2초 동안 추가 입력이 없으면 정지
   unsigned long now = millis();
   if (now - checked > 2000) {
-    Serial.println(".");
-
     analogWrite(LEFT_WHEEL_PIN1, POWER_OFF); // Off
     analogWrite(RIGHT_WHEEL_PIN1, POWER_OFF);
     analogWrite(LEFT_WHEEL_PIN2, POWER_OFF);
@@ -60,26 +55,23 @@ void loop() {
     switch (ch) {
       case 'U': // 전진
         checked = now;
-        Serial.println("UP");
         analogWrite(LEFT_WHEEL_PIN1, POWER_MAX); // On(MAX!)
         analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
         break;
       case 'L': // 좌회전
         checked = now;
-        Serial.println("Left");
         analogWrite(LEFT_WHEEL_PIN1, POWER_MAX);
         analogWrite(RIGHT_WHEEL_PIN1, POWER_MID);
         break;
       case 'R': // 우회전
         checked = now;
-        Serial.println("Right");
         analogWrite(LEFT_WHEEL_PIN1, POWER_MID);
         analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
         break;
-      default:
-        Serial.println(ch);
     }
   }
+
+  delay(1);
 }
 
 // @TODO. 양쪽 바퀴에 걸리는 힘 차이를 보정하기 위해 양쪽 바퀴에 대한 analogWrite 값을 다르게 설정. POWER_MID를 0으로 변경하면 확인이 용이
