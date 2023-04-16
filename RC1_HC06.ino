@@ -33,6 +33,9 @@ void setup() {
   analogWrite(RIGHT_WHEEL_PIN1, POWER_OFF);
   analogWrite(LEFT_WHEEL_PIN2, POWER_OFF);
   analogWrite(RIGHT_WHEEL_PIN2, POWER_OFF);
+
+  delay(1000);
+  bt.write("AT+NAMERCCarPaint\r\n"); // AT+NAME 문자열 뒤에 원하는 기기 이름을 지정
 }
 
 unsigned long checked = 0;
