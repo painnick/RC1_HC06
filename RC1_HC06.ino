@@ -55,22 +55,28 @@ void loop() {
   if (bt.available()) {
     int ch = bt.read();
 
-    switch (ch) {
-      case 'U': // 전진
-        checked = now;
-        analogWrite(LEFT_WHEEL_PIN1, POWER_MAX); // On(MAX!)
-        analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
-        break;
-      case 'L': // 좌회전
-        checked = now;
-        analogWrite(LEFT_WHEEL_PIN1, POWER_MAX);
-        analogWrite(RIGHT_WHEEL_PIN1, POWER_MID);
-        break;
-      case 'R': // 우회전
-        checked = now;
-        analogWrite(LEFT_WHEEL_PIN1, POWER_MID);
-        analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
-        break;
+    if (ch == '^') {
+      while(!bt.available()) {
+        // Do Nothing
+      }
+      int cmd = bt.read();
+      switch (cmd) {
+        case 'U': // 전진
+          checked = now;
+          analogWrite(LEFT_WHEEL_PIN1, POWER_MAX); // On(MAX!)
+          analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
+          break;
+        case 'L': // 좌회전
+          checked = now;
+          analogWrite(LEFT_WHEEL_PIN1, POWER_MAX);
+          analogWrite(RIGHT_WHEEL_PIN2, POWER_MID);
+          break;
+        case 'R': // 우회전
+          checked = now;
+          analogWrite(LEFT_WHEEL_PIN2, POWER_MID);
+          analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
+          break;
+      }
     }
   }
 
