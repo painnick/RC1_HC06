@@ -65,16 +65,33 @@ void loop() {
           checked = now;
           analogWrite(LEFT_WHEEL_PIN1, POWER_MAX); // On(MAX!)
           analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
+
+          analogWrite(LEFT_WHEEL_PIN2, POWER_OFF);
+          analogWrite(RIGHT_WHEEL_PIN2, POWER_OFF);
           break;
         case 'L': // 좌회전
           checked = now;
           analogWrite(LEFT_WHEEL_PIN1, POWER_MAX);
           analogWrite(RIGHT_WHEEL_PIN2, POWER_MID);
+
+          analogWrite(LEFT_WHEEL_PIN2, POWER_OFF);
+          analogWrite(RIGHT_WHEEL_PIN1, POWER_OFF);
           break;
         case 'R': // 우회전
           checked = now;
           analogWrite(LEFT_WHEEL_PIN2, POWER_MID);
           analogWrite(RIGHT_WHEEL_PIN1, POWER_MAX);
+
+          analogWrite(LEFT_WHEEL_PIN1, POWER_OFF);
+          analogWrite(RIGHT_WHEEL_PIN2, POWER_OFF);
+          break;
+        case 'D': // 후진
+          checked = now;
+          analogWrite(LEFT_WHEEL_PIN2, POWER_MID);
+          analogWrite(RIGHT_WHEEL_PIN2, POWER_MID);
+
+          analogWrite(LEFT_WHEEL_PIN1, POWER_OFF);
+          analogWrite(RIGHT_WHEEL_PIN1, POWER_OFF);
           break;
       }
     }
